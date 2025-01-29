@@ -51,6 +51,8 @@ scripts/config --enable DEBUG_INFO_NONE
     sudo make install -j<number_of_cores>
     sudo update-grub
     ```
+    ![](./make-install.png)
+    ![](./grub-update.png)
 - Customize Boot Message:
   - navigate to the folder `/etc/grub.d`
   - edit the file `40_custom` to append your custom boot message
@@ -58,10 +60,12 @@ scripts/config --enable DEBUG_INFO_NONE
   - update the grub configuration with the command `sudo update-grub`
 - Boot into the New Kernel
   - Reboot your system, your custom display message should be displayed, select the new kernel from the GRUB boot menu.
+    ![](./new-date.png)
   - Verify the kernel version after booting:
     ```ssh
     uname -r
     ```
+    ![](./new-6.12.10.png)
 - Run Kernel test:
   - navigate to folder where you tests exists eg: `/linux-6.12.10/tools/testing/selftests/kselftest_install` confirm the file `kselftest-list.txt` exists and is not empty.
   - Run a subset of self-tests to ensure your kernel is functioning correctly:
@@ -70,4 +74,6 @@ scripts/config --enable DEBUG_INFO_NONE
       $ ./run_kselftest.sh -c size -t timers:posix_timers > timer_test_results.txt 2>&1
       $ ./run_kselftest.sh > self_test.txt 2>&1
       ```
+      ![](./self_test_50.png)
+      ![](./timer_test_results.png)
   
